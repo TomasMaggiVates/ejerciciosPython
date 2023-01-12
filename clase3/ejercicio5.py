@@ -1,7 +1,12 @@
 def ejercicio5():
-    def getKeysIterable(dic: dict):
-        for key in dic.keys():
-            yield (key)
+    def printPersonas(dic: dict[str, list]):
+        keys = list(dic.keys())
+
+        for i in range(len(dic[keys[0]])):
+            print(f"persona {i+1}:")
+            for key in keys:
+                print(f"{key}: {dic[key][i]}")
+            print("-------------")
 
     uglstr =\
         "dni;nombre;email;teléfono;descuento\n\
@@ -21,10 +26,10 @@ def ejercicio5():
     l.remove(l[0])
 
     for i in l:
-        for key, j in info.keys(), i:
-            print(key, j)
+        for j, key in zip(i, info):
+            info[key].append(j)
 
-    print(getKeysIterable(info))
+    printPersonas(info)
 
 
 if __name__ == "__main__":
