@@ -33,6 +33,7 @@ def add(DB: dict, id=None):
 
 
 def printContactos(l: dict | list[dict]) -> None:
+    print('--------------------')
     if isinstance(l, dict):
         for k, v in l.items():
             print(f"{k}: {v}")
@@ -95,14 +96,37 @@ def ejercicio8():
             }
         ]
 
-    print("Agenda: ", end="\n\n")
-    print("opciones:")
-    print("1. agregar contacto")
-    print("2. modificar contacto")
-    print("3. buscar contacto")
-    print("4. elminar contacto")
-    print("5. listar contactos")
-    print("6. salir")
+    while True:
+        print("Agenda: ", end="\n\n")
+        print("opciones:")
+        print("1. agregar contacto")
+        print("2. modificar contacto")
+        print("3. buscar contacto")
+        print("4. elminar contacto")
+        print("5. listar contactos")
+        print("6. salir")
+
+        op = int(input("seleccione su opcion:  "))
+        match(op):
+            case 1:
+                printContactos(add(DB))
+            case 2:
+                s = input(
+                    "escriba el nombre, apellido o identificador a modificar")
+                modificar(DB, s)
+            case 3:
+                s = input("escriba el nombre, apellido o identificador a buscar")
+                printContactos(buscar(DB, s))
+            case 4:
+                s = input(
+                    "escriba el nombre, apellido o identificador a eliminar")
+                eliminar(DB, s)
+            case 5:
+                printContactos(DB)
+            case 6:
+                break
+            case _:
+                continue
 
 
 if __name__ == "__main__":
