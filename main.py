@@ -1,3 +1,12 @@
-from clase2.ejercicio1 import ejercicio1
+class Persona:
+    def __init__(self: object) -> None:
+        self.name = 'asdw'
+        self.age = '12345'
 
-ejercicio1()
+    def __str__(self) -> str:
+        return f'{self.name}: {self.age}'
+
+
+s = Persona()
+if s:
+    print(s)
