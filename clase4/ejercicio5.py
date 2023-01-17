@@ -12,7 +12,7 @@ def quitarAcentos(s: str) -> str:
 def getFrecuencia(s: str) -> dict[str, int]:
     info = {}
     # limpiamos el str de caracteres que no sean letras o numeros
-    s = list(s.replace(',', '').replace('.', '').split(' '))
+    s = list(s.replace(',', '').replace('.', '').replace('\n', '').split(' '))
 
     for i in s:
 
@@ -53,7 +53,6 @@ cada palabra que contiene y su frecuencia"
     t = mayorFrecuencia(d)
 
     l = len(t[0])
-    print(l)
     print(f"Palabra{'s' if l > 2 else ''} mas usada{'s' if l > 2 else ''}: ")
     for i in t[0]:
         print(f"* {i}")

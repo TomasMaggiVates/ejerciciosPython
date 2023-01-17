@@ -2,7 +2,7 @@ def factorial(num: int) -> int:
     factorial = 1
     if num > 0:
         for i in range(num, 1, -1):
-            factorial = factorial * i
+            factorial *= i
     elif num < 0:
         raise ValueError("solo numeros mayores o iguales a 0")
     return factorial

@@ -7,7 +7,7 @@ def areaCirculo(r: float) -> float:
 
 
 def AreaCilindro(b: float, h: float) -> float:
-    # V = Π h r²
+    # V = π h r²
     return areaCirculo(b) * h
 
 
