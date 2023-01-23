@@ -14,8 +14,3 @@ class Alumno:
 
     def __hash__(self):
         return hash(self.legajo)
-
-
-a = Alumno('ahfe', 'fhraeofasw', 20)
-
-print(a)

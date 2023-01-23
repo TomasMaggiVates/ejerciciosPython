@@ -6,16 +6,76 @@ from libreta_class import Libreta
 
 
 class Institucion:
-    # cargar Alumnos
-    # asignar libreta a alumno
-    # cargar notas a cada alumno por materia por semestre
-    # conseguir libreta de alumno por legajo
-    # mejor promedio por grado
-    # materias de cada maestro
-    # alumnos de cada materia
-    # alumnos de cada maestro
 
-    pass
+    def __init__(self) -> None:
+        self.alumnos = []
+        self.maestros = []
+        self.materias = []
+        self.grados = []
+
+    def agregarAlumno(self, nombre: str, apellido: str, legajo: str) -> Alumno:
+        # cargar Alumnos
+        a = Alumno(nombre, apellido, legajo)
+        self.alumnos.append(a)
+        return a
+
+    def agregaMaestro(self, nombre: str, apellido: str, legajo: str) -> Maestro:
+        m = Maestro(nombre, apellido, legajo)
+        self.maestros.append(m)
+        return m
+
+    def agregarMateria(self, nombre: str, maestro: Maestro) -> None:
+        self.materias.append(Materia(nombre, maestro))
+
+    def agregarGrado(self, maestro: Maestro, alumnos: list[Alumno], materias: list[Materia]) -> None:
+        self.alumnos.append(Grado(maestro, alumnos, materias))
+
+    def agregarLibreta(self, grado: Grado, materias: list[Materia], alumno: Alumno) -> None:
+        # asignar libreta a alumno
+        alumno.libreta = Libreta(grado, materias)
+
+    def getLibretaPorLegajo(self, legajo) -> Alumno:
+        # conseguir alumno por legajo
+        for alumno in self.alumnos:
+            if alumno.legajo == legajo:
+                return alumno
+
+    def mejorPromedioPorGrado(self) -> dict:
+        # conseguir mejor promedio por grado
+        d = {}
+        for grado in self.grados:
+            d[grado]
+            for alumno in self.alumnos:
+                if alumno.libreta.promedioGeneral() > d[grado].alumno.libreta.promedioGeneral() or not d[grado]:
+                    d[grado] = alumno
+        return d
+
+    def materiasPorMaestro(self) -> dict:
+        # materias de cada maestro
+        d = {}
+        for maestro in self.maestros:
+            d[maestro] = []
+            for materia in self.materias:
+                if materia.maestro == maestro:
+                    d[maestro].append(materia)
+        return d
+
+    def alumnosPorMateria(self) -> dict:
+        # alumnos de cada materia
+        d = {}
+        for materia in self.materias:
+            d[materia] = []
+            for alumno in self.alumnos:
+                if alumno.libreta.materias[materia]:
+                    d[materia].append(alumno)
+        return d
+
+    def alumnosPorMaestro(self) -> dict:
+        # alumnos de cada maestro
+        d = {}
+        for maestro, alumnos, materias in zip(self.grados):
+            d[maestro] = alumnos
+        return d
 
 
 def main():

@@ -13,6 +13,7 @@ class Libreta:
             self.materias[materia] = {'1': None, '2': None}
 
     def agregarNotasMateria(self, materia, semestre, nota) -> None:
+        # cargar notas a cada alumno por materia por semestre
         self.materias[materia][semestre] = nota
 
     def promedioMateria(self, materia) -> float:
