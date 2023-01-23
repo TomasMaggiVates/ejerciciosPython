@@ -78,6 +78,20 @@ class Institucion:
         return d
 
 
+def cargarDatosExistentes(escuela: Institucion, datosAlumnos: dict, datosProfesores: dict) -> None:
+    grado = {}
+
+    for k, v in datosAlumnos.items():
+        grado[v['grado']] = []
+
+    for k, v in datosAlumnos.items():
+        grado[v['grado']].append(
+            {'nombre': v['nombre'], 'apellido': v['apellido'], 'legajo': k})
+
+    for k, v in grado.items():
+        print(k, v)
+
+
 def main():
     NOMBRE = "nombre"
     APELLIDO = "apellido"
@@ -85,7 +99,7 @@ def main():
     NOMBRE_MATERIA = "nombre materia"
     LEGAJO = "legajo"
 
-    datos_alumno = \
+    datosAlumnos = \
         {
             "10": {NOMBRE: "Martin", APELLIDO: "Domingez", GRADO: 1},
             "20": {NOMBRE: "Marcela", APELLIDO: "Morelo", GRADO: 2},
@@ -101,7 +115,7 @@ def main():
             "120": {NOMBRE: "Martin", APELLIDO: "Domingez", GRADO: 1}
         }
 
-    datos_profesores = \
+    datosProfesores = \
         {
             1: {NOMBRE_MATERIA: "Artes", NOMBRE: "Augusto", APELLIDO: "Gutierres", LEGAJO: "M10"},
             1: {NOMBRE_MATERIA: "Matemática", NOMBRE: "Cecilia", APELLIDO: "Peña", LEGAJO: "M20"},
@@ -113,3 +127,10 @@ def main():
             3: {NOMBRE_MATERIA: "Formación Cívica", NOMBRE: "Sandra", APELLIDO: "Almada", LEGAJO: "M30"},
             3: {NOMBRE_MATERIA: "Inglés", NOMBRE: "Sandra", APELLIDO:  "Almada", LEGAJO: "M30"}
         }
+
+    escuela = Institucion()
+    cargarDatosExistentes(escuela, datosAlumnos, datosProfesores)
+
+
+if __name__ == "__main__":
+    main()
