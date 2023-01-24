@@ -51,8 +51,7 @@ if __name__ == "__main__":
                 'legajo': '10',
                 'nombre': 'Martin',
                 'apellido': 'Dominguez',
-                'grado': '1',
-                'libreta': Libreta(['Artes', 'Matemática', 'Geografía'])
+                'grado': '1'
             },
             {
                 'legajo': '20',
